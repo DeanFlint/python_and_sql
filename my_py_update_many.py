@@ -1,5 +1,4 @@
 import os
-import datatime
 import pymysql
 
 #Get username from Cloud9 workspace
@@ -14,11 +13,13 @@ connection = pymysql.connect(host='localhost',
                             
 try:
     #Run a query
-    with connection.cursor(pymysql.cursors.DictCursor) as cursor:
-        sql = "SELECT * FROM Genre;"
-        cursor.execute(sql)
-        for row in cursor:
-            print(row)
+    with connection.cursor() as cursor:
+        rows = [(23, 'Bob'),
+                (24, 'Jim'),
+                (25, 'Fred')]
+        cursor.executemany("UPDATE Friends SET age = %s WHERE name = %s;",
+                        rows )
+        connection.commit()
 finally:
     #Close the connection, regardsless of whether the above was successful
     connection.close()
