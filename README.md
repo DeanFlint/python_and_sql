@@ -1,6 +1,6 @@
 ## Steps Taken:
 
-### Start mysql
+### Start mysql server
 ``` mysql-ctl start ```
 
 ### Login
@@ -17,3 +17,7 @@
 
 ### Import the requirements into text file
 ``` pip3 freeze > requirements.txt ```
+
+
+#### Notes
+##### 'connection.cursor(pymysql.cursors.DictCursor) as cursor' is used to convert 
